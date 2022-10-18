@@ -1,0 +1,47 @@
+Analysis
+
+void bubblesort(int* A,int n){
+    int i=0;                         # constant time = 1
+    int j=0;                         # constant time = 1
+    int temp;                        # constant time = 1
+    for(i=0;i<n-1;i++){              # n-1 times
+        for(j=0;j<n-1-i;j++){        # 1+2+3+...n-1 times = (n)(n-1)/2 (consider it as x)
+            if(A[j]>A[j+1]){         # x 
+                temp = A[j];         # x
+                A[j] = A[j+1];       # x 
+                A[j+1] = temp;       # x
+            }                        The above 4 statments are within the loop hence it will execute
+        }                            the same number of times as the loop = x
+    }
+}
+
+Above is the code for bubble sort which I have used in the program. Along the lines I have written 
+the theoretical time complexity.
+Total time complexity = 1+1+1+n-1+x+x+x+x+x ( where x = (n)(n-1)/2)
+                       = 2+n+5(n)(n-1)/2
+                       = 2-(3/2)n + (5/2)n^2
+Hence the time complexity is O(n^2)
+
+
+void insertionsort(int* A, int n){
+    int i,j,key;                   # 3 initialization statments = 3
+    for(i=1;i<n-1;i++){            # n-1 times
+        key=A[i];                  
+        j=i-1;
+        while(j>=0 && A[j]>key){   #n(n-1)/2 
+            A[j+1]=A[j];           #n(n-1)/2
+            j--;
+        }
+        A[j+1]=key;                #n-1
+    }
+}
+
+Above is the code for insertion sort which I have used in the program. Along the lines I have written 
+the theoretical time complexity.
+Total time complexity = 1+1+1+n-1+2(n)(n-1)/2+n-1 ( where x = (n)(n-1)/2)
+                       = 2n+1+n^2-n
+                       = n^2+n+1
+Hence the time complexity is O(n^2)
+
+Both sorting methods have time complexity as O(n^2). However, as the graph and the equations 
+show, the insertion method is faster than bubble sort method.
